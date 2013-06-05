@@ -34,7 +34,8 @@ class BurpExtender(IBurpExtender, IHttpRequestResponse, IHttpService, ITab):
 
     self.stdout = PrintWriter(callbacks.getStdout(), True)
     self.stderr = PrintWriter(callbacks.getStderr(), True)
-    self.stdout.println("Hello Burp!  Let\'s do something.")
+    burpInfo = callbacks.getBurpVersion()
+    self.stdout.println("Hello " + burpInfo[0] + " v" + burpInfo[1] + "." + burpInfo[2] +"!")
 
   def getTabCaption(self):
     return "Hello Burp"
